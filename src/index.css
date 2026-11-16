@@ -1,0 +1,6 @@
+@import "./styles/variables.css";
+
+/* Base styles and utility overrides */
+:root {
+  font-family: 'Plus Jakarta Sans', var(--font-sans);
+}

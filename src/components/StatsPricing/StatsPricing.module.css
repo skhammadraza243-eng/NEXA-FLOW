@@ -1,0 +1,379 @@
+/* ==========================================================================
+   PRICING & STATS SECTION STYLES
+   Animated number counters on scroll, billing toggle, tier cards
+   ========================================================================== */
+
+.section {
+  position: relative;
+  padding-block: var(--section-padding-y);
+  background-color: var(--bg-primary);
+  overflow: hidden;
+}
+
+.ambientGlow {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 70%);
+  filter: blur(120px);
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Stats Counter Grid
+   ========================================================================== */
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1rem, 2vw, 1.5rem);
+  margin-bottom: clamp(4rem, 8vw, 7rem);
+}
+
+@media (max-width: 960px) {
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.statCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: clamp(1.5rem, 2.5vw, 2rem);
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(12px);
+  position: relative;
+  transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.statCard:hover {
+  border-color: rgba(99, 102, 241, 0.4);
+  box-shadow: var(--shadow-md);
+}
+
+.statNumber {
+  font-family: var(--font-mono);
+  font-size: clamp(2.25rem, 3.5vw, 3.25rem);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.statNumberEmerald {
+  color: var(--accent-emerald);
+}
+
+.statNumberIndigo {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.statLabel {
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.statDesc {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  line-height: var(--leading-normal);
+}
+
+/* ==========================================================================
+   Pricing Section Header & Toggle
+   ========================================================================== */
+
+.pricingHeader {
+  text-align: center;
+  max-width: 760px;
+  margin-inline: auto;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  background: var(--accent-emerald-light);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--text-accent-emerald);
+  margin-bottom: var(--space-4);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.title {
+  font-size: var(--text-3xl);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: var(--leading-tight);
+  color: var(--text-primary);
+  margin-bottom: var(--space-4);
+}
+
+.gradientText {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline;
+}
+
+.subtitle {
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-6);
+}
+
+/* Billing Toggle Switch */
+.toggleWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+.toggleContainer {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(16, 25, 46, 0.85);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-full);
+  padding: 5px;
+  position: relative;
+  backdrop-filter: blur(12px);
+}
+
+.toggleBtn {
+  position: relative;
+  padding: 8px 18px;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-secondary);
+  border-radius: var(--radius-full);
+  transition: color var(--transition-fast);
+  cursor: pointer;
+  z-index: 1;
+}
+
+.toggleBtnActive {
+  color: #ffffff;
+}
+
+.toggleIndicator {
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-indigo-emerald);
+  border-radius: var(--radius-full);
+  box-shadow: 0 4px 14px -2px rgba(99, 102, 241, 0.6);
+  z-index: -1;
+}
+
+.saveBadge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  color: var(--accent-emerald);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ==========================================================================
+   Pricing Cards Grid
+   ========================================================================== */
+
+.pricingGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+  align-items: stretch;
+}
+
+@media (max-width: 960px) {
+  .pricingGrid {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+    margin-inline: auto;
+  }
+}
+
+.pricingCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: clamp(1.75rem, 3vw, 2.5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  backdrop-filter: blur(14px);
+  position: relative;
+  transition: transform var(--transition-normal),
+              box-shadow var(--transition-normal),
+              border-color var(--transition-normal);
+}
+
+.pricingCard:hover {
+  transform: translateY(-6px);
+  border-color: rgba(99, 102, 241, 0.4);
+  box-shadow: var(--shadow-card-elevate);
+}
+
+.popularCard {
+  background: linear-gradient(
+    180deg,
+    rgba(21, 34, 60, 0.85) 0%,
+    rgba(16, 25, 46, 0.85) 100%
+  );
+  border: 1.5px solid rgba(99, 102, 241, 0.55);
+  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.8),
+              0 0 30px -5px rgba(99, 102, 241, 0.3);
+}
+
+.popularCard:hover {
+  box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.9),
+              0 0 35px -3px rgba(99, 102, 241, 0.5);
+}
+
+.popularTag {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gradient-indigo-emerald);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 4px 14px;
+  border-radius: var(--radius-full);
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.5);
+  white-space: nowrap;
+}
+
+.planHeader {
+  margin-bottom: var(--space-5);
+}
+
+.planName {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-1);
+}
+
+.planDesc {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  line-height: var(--leading-normal);
+  min-height: 36px;
+}
+
+/* Price Display */
+.priceBox {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-1);
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-5);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.currency {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.amount {
+  font-family: var(--font-mono);
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.period {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+/* Feature Checkmarks */
+.featuresList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-8);
+  list-style: none;
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+}
+
+/* Plan Action Button */
+.planBtn {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 13px 20px;
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+}
+
+.planBtnStandard {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+}
+
+.planBtnStandard:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--border-medium);
+  transform: translateY(-2px);
+}
+
+.planBtnPopular {
+  background: var(--gradient-primary);
+  color: #ffffff;
+  box-shadow: 0 8px 24px -2px rgba(99, 102, 241, 0.6);
+}
+
+.planBtnPopular:hover {
+  box-shadow: 0 12px 30px -2px rgba(99, 102, 241, 0.8);
+  transform: translateY(-2px);
+}
